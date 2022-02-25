@@ -1,0 +1,139 @@
+:root {
+  --yellow: #c79c2e;
+  --green: #51b36e;
+  --red: #943e3c;
+  --white: #f4f3f1;
+  --black: #252525;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.title-container {
+  font-family: 'Acme', sans-serif;
+  text-align: center;
+  width: 510px;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.letter-yellow {
+  color: var(--yellow);
+}
+
+.letter-green {
+  color: var(--green);
+}
+
+.letter-red {
+  color: var(--red);
+}
+
+.app-container {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tile-row {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.tile-column {
+  background: transparent;
+  color: var(--black);
+  height: 40px;
+  width: 48px;
+  border-radius: 0.25rem;
+  margin-right: 0.5rem;
+  font-size: 1.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Signika Negative', sans-serif;
+  font-weight: 700;
+}
+
+.tile-container {
+  margin-bottom: 0.75rem;
+}
+
+.typing {
+  border: 3px solid var(--black);
+}
+
+.disabled {
+  border: 1px solid var(--black);
+}
+
+.right, .wrong, .displaced {
+  color: var(--white);
+}
+
+.right {
+  background: var(--green);
+}
+
+.wrong {
+  background: var(--red);
+}
+
+.displaced {
+  background: var(--yellow);
+}
+
+.keyboard-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.keyboard-row-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+.keyboard-row-container.notAlphabetic {
+  width: 100%;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.keyboard-row-container.notAlphabetic button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 2rem;
+  background: transparent;
+}
+
+.keyboard-row-container.notAlphabetic img{
+  width: 20px;
+}
+
+.keyboard-row-container:not(.notAlphabetic) button {
+  width: 8%;
+  height: 40px;
+  font-size: 1rem;
+  font-family: 'Signika Negative', sans-serif;
+  font-weight: 400;
+  background-color: #fafafa;
+}
+
+.keyboard-row-container.notAlphabetic button, .keyboard-row-container:not(.notAlphabetic) button{
+  cursor: pointer;
+  border-radius: 0.25rem;
+  margin-right: 0.25rem;
+  border: 1px solid var(--black);
+}
