@@ -74,22 +74,6 @@
   border: 1px solid var(--black);
 }
 
-.right, .wrong, .displaced {
-  color: var(--white);
-}
-
-.right {
-  background: var(--green);
-}
-
-.wrong {
-  background: var(--red);
-}
-
-.displaced {
-  background: var(--yellow);
-}
-
 .keyboard-container {
   width: 100%;
   display: flex;
@@ -136,4 +120,28 @@
   border-radius: 0.25rem;
   margin-right: 0.25rem;
   border: 1px solid var(--black);
+}
+
+.right, 
+.wrong, 
+.displaced,
+.keyboard-row-container button.right,
+.keyboard-row-container button.wrong,
+.keyboard-row-container button.displaced {
+  color: var(--white);
+}
+
+.right,
+.keyboard-row-container button.right {
+  background: var(--green);
+}
+
+.wrong,
+.keyboard-row-container button.wrong {
+  background: var(--red);
+}
+
+.displaced,
+.keyboard-row-container button.displaced {
+  background: var(--yellow);
 }

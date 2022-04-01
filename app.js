@@ -7,6 +7,7 @@ const keyboardThirdRow = document.querySelector('#keyboardThirdRow');
 const keysFirstRow = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'];
 const keysSecondRow = ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'];
 const keysThirdRow = ['Z', 'X', 'C', 'V', 'B', 'N', 'M'];
+const keysAccepted = [...keysFirstRow, ...keysSecondRow, ...keysThirdRow];
 
 const rows = 6;
 const columns = 5;
@@ -16,6 +17,7 @@ let currentColumn = 0;
 
 const letreco = 'VASCO';
 let letrecoMap = {};
+
 for (let index = 0; index < letreco.length; index++) {
   letrecoMap[letreco[index]] = index;  
 }
@@ -64,31 +66,48 @@ const checkGuess = () => {
   }
 
   const currentColumns = document.querySelectorAll('.typing');
+
   for (let index = 0; index < columns; index++) {
     const letter = guess[index];
+    const keyboardLetter = document.querySelector(`#${letter}`);
     if(letrecoMap[letter] === undefined){
       currentColumns[index].classList.add('wrong');
+      keyboardLetter.classList.add('wrong');
     } else {
       if(letrecoMap[letter] === index) {
         currentColumns[index].classList.add('right');
+        keyboardLetter.classList.add('right');
       } else {
         currentColumns[index].classList.add('displaced');
+        keyboardLetter.classList.add('displaced');
       }
     } 
     
   }
 
   if(guess === letreco) {
-    window.alert('Tu é demais');
+    winner(true);
   } else {
     if(currentRow === rows - 1){
-      window.alert('errou');
+      winner(false);
     } else {
       moveToNextRow();
     }
   }
   
 };
+
+const winner = (result) => {
+  if(result){ 
+    console.log('Venceu');
+  } else {
+    console.log('Perdeu');
+  }
+
+  document.onkeydown = function (event) {
+    event.preventDefault();
+  }
+}
 
 const handleKeyboardOnClick = (key) => {
   if (currentColumn === columns) {
@@ -149,12 +168,12 @@ function createButtonsBackspaceAndEnter(){
 createButtonsBackspaceAndEnter();
 
 document.onkeydown = function (event) {
-  event = event || widow.event;
+  event = event || window.event;
   if(event.key === 'Enter'){
     checkGuess();
   } else if (event.key === 'Backspace') {
     handleBackspace();
-  } else {
+  } else if (keysAccepted.includes(event.key.toUpperCase())) {
     handleKeyboardOnClick(event.key.toUpperCase());
   }
 }
